@@ -1,46 +1,43 @@
-
-  <ion-card>
+<script lang="ts">
+	import data from './data.json';
+	let q: string = '';
+	let a: string = '';
+	const getQuestion = () => {
+		const index = Math.floor(Math.random() * data.length);
+		const q = data[index];
+		data.splice(index, 1);
+		return q;
+	}
+	const loadQuestion = () => {
+		const qq: any = getQuestion();
+		const arr = qq.split('|');
+		q = arr[0];
+		a = arr[1];
+	}
+	loadQuestion();
+</script>
+<ion-card>
 	<ion-card-header>
-		<ion-card-subtitle>Great success!!</ion-card-subtitle>
-		<ion-card-title>Welcome to your app!</ion-card-title>
+		<div class="header">Is it a drug, or is it a planet?</div>
 	</ion-card-header>
-
+	<ion-card-title class="ion-padding"><ion-label>{q}</ion-label></ion-card-title>
+	<!-- <ion-card-subtitle class="ion-padding"><ion-label>Subtitle</ion-label></ion-card-subtitle> -->
 	<ion-card-content>
-		Thank you for using this starter. Click buttons below to open these guides (will
-		open in new window). Don't forget to open DevTools to see this app in mobile mode. Happy coding!!!
+		<ion-grid>
+			<ion-row>
+				<ion-col>
+					<ion-button color="danger" expand="block" on:click={loadQuestion}>Drug</ion-button>
+				</ion-col>
+				<ion-col>
+					<ion-button color="success" expand="block" on:click={loadQuestion}>Planet</ion-button>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
 	</ion-card-content>
-
-	<ion-item>
-		<ion-label>Visit Ionic Showcase app with sourceviewer</ion-label>
-		<ion-button href="https://ionicsvelte.firebaseapp.com/" target="_new" fill="outline" slot="end"
-			>View</ion-button
-		>
-	</ion-item>
-
-	<ion-item>
-		<ion-label>Visit Ionic component docs</ion-label>
-		<ion-button
-			href="https://ionicframework.com/docs/components"
-			target="_new"
-			fill="outline"
-			slot="end">View</ion-button
-		>
-	</ion-item>
-	<ion-item>
-		<ion-label>Visit Svelte Kit docs</ion-label>
-		<ion-button
-			href="https://kit.svelte.dev/docs/introduction"
-			target="_new"
-			fill="outline"
-			slot="end">View</ion-button
-		>
-	</ion-item>
-	<ion-item>
-		<ion-label>Visit Svelte docs</ion-label>
-		<ion-button href="https://svelte.dev/docs" target="_new" fill="outline" slot="end"
-			>View</ion-button
-		>
-	</ion-item>
 </ion-card>
-
-  
+<style>
+	.header {
+		font-size: larger;
+		color: darkblue;
+	}
+</style>
