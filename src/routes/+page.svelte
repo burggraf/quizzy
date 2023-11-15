@@ -6,7 +6,7 @@
 	import { page } from '$app/stores'
 
 	import endgame from './endgame.svelte';
-	const QUESTION_COUNT = $page.url.searchParams.get('count') || 20;
+	const QUESTION_COUNT: number = parseInt($page.url.searchParams.get('count') || '20');
 	let q: string = '';
 	let a: string = '';
 	let score: number = 0;
