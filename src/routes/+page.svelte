@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
 	import data from './data.json';
+	//import { modalController } from '@ionic/core'
+	import { modalController } from 'ionic-svelte'
+
+	import endgame from './endgame.svelte';
 	let q: string = '';
 	let a: string = '';
 	let score: number = 0;
@@ -25,7 +29,7 @@
 			finish(false, choice);
 		}
 	}
-	const finish = (scored: boolean, choice: string) => {
+	const finish = async (scored: boolean, choice: string) => {
 		const el: any = document.getElementById(choice=='D' ? 'drugbutton' : 'planetbutton');
 		if (scored) {
 			el.color = 'success';
@@ -36,15 +40,50 @@
 			result = `Incorrect! <b>${q}</b> is a <b>${a=="D" ? "drug" : "planet"}</b>.`;
 		}
 		total++;
-		setTimeout(() => {
+		setTimeout(async () => {
 			el.color = 'medium';
 			result = '';
+			if (total === 6) {
+				const {data,error} = await openModal(endgame,{total,score});
+				total = 0;
+				score = 0;
+			}
 			loadQuestion();
 		}, 2000);
 	}
 	onMount(() => {
 		loadQuestion();
 	});
+	const openModal = async (theModal: any, theProps: any = {}, theOptions: any = {}) => {
+		const obj: any = {
+			component: theModal,
+			componentProps: theProps,
+			showBackdrop: true,
+			backdropDismiss: true,
+		};
+		for (const key in theOptions) {
+			obj[key] = theOptions[key];
+		}
+		const openModalController = await modalController.create(obj)
+		openModalController.present();
+		setTimeout(() => {resizeModal(openModalController)}, 200);
+		const { data } = await openModalController.onWillDismiss();
+		return data;
+	}
+	const resizeModal = async (openLoginModalController: HTMLIonModalElement) => {
+		setTimeout(() => {
+			const pg = openLoginModalController.getElementsByClassName('ion-page')[0];
+			const header = pg.getElementsByTagName('ion-header')[0];
+			const content = pg.getElementsByTagName('ion-content')[0];
+			const footer = pg.getElementsByTagName('ion-footer')[0];
+			let p = pg.clientHeight;
+			if (header) p -= header.clientHeight;
+			if (footer) p -= footer.clientHeight;
+			content.style.height = p + 'px';
+		}, 200);
+	}	
+
+
 </script>
 <ion-card color="light">
 	<!-- <ion-card-header>
