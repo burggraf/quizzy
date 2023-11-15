@@ -28,9 +28,9 @@
 	const finish = (scored: boolean) => {
 		if (scored) {
 			score++;
-			result = `Correct! <b>${q}</b> is a <b>${q=="D" ? "drug" : "planet"}</b>.`;
+			result = `Correct! <b>${q}</b> is a <b>${a=="D" ? "drug" : "planet"}</b>.`;
 		} else {
-			result = `Incorrect! <b>${q}</b> is a <b>${q=="D" ? "drug" : "planet"}</b>.`;
+			result = `Incorrect! <b>${q}</b> is a <b>${a=="D" ? "drug" : "planet"}</b>.`;
 		}
 		total++;
 		loadQuestion();
