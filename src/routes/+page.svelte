@@ -19,21 +19,28 @@
 	}
 	const choose = (choice: string) => {
 		if (a === choice) {
-			finish(true);
+			finish(true, choice);
 		} else {
-			finish(false);
+			finish(false, choice);
 		}
 		loadQuestion();
 	}
-	const finish = (scored: boolean) => {
+	const finish = (scored: boolean, choice: string) => {
+		const el: any = document.getElementById(choice=='D' ? 'drugbutton' : 'planetbutton');
 		if (scored) {
+			el.color = 'success';
 			score++;
 			result = `Correct! <b>${q}</b> is a <b>${a=="D" ? "drug" : "planet"}</b>.`;
 		} else {
+			el.color = 'danger';
 			result = `Incorrect! <b>${q}</b> is a <b>${a=="D" ? "drug" : "planet"}</b>.`;
 		}
 		total++;
-		loadQuestion();
+		setTimeout(() => {
+			el.color = 'medium';
+			result = '';
+			loadQuestion();
+		}, 2000);
 	}
 	loadQuestion();
 </script>
