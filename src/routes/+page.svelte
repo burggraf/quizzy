@@ -12,6 +12,7 @@
 	let score: number = 0;
 	let total: number = 0;
 	let result: string = '';
+	let buttonsActive = false;
 
 	const getQuestion = () => {
 		const index = Math.floor(Math.random() * data.length);
@@ -24,12 +25,16 @@
 		const arr = qq.split('|');
 		q = arr[0];
 		a = arr[1];
+		buttonsActive = true;
 	}
 	const choose = (choice: string) => {
-		if (a === choice) {
-			finish(true, choice);
-		} else {
-			finish(false, choice);
+		if (buttonsActive) {
+			buttonsActive = false;
+			if (a === choice) {
+				finish(true, choice);
+			} else {
+				finish(false, choice);
+			}
 		}
 	}
 	const finish = async (scored: boolean, choice: string) => {
