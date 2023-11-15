@@ -5,6 +5,7 @@
 	import { modalController } from 'ionic-svelte'
 
 	import endgame from './endgame.svelte';
+	const QUESTION_COUNT = 2;
 	let q: string = '';
 	let a: string = '';
 	let score: number = 0;
@@ -43,7 +44,7 @@
 		setTimeout(async () => {
 			el.color = 'medium';
 			result = '';
-			if (total === 6) {
+			if (total >= QUESTION_COUNT) {
 				const {data,error} = await openModal(endgame,{total,score});
 				total = 0;
 				score = 0;
@@ -82,8 +83,6 @@
 			content.style.height = p + 'px';
 		}, 200);
 	}	
-
-
 </script>
 <ion-card color="light">
 	<!-- <ion-card-header>
