@@ -4,7 +4,7 @@
 	// import { onMount } from "svelte"
 	export let total = 0
 	export let score = 0
-	let title = 'Game Over'
+	let title = 'Drug or Planet?'
 	const closeOverlay = (data?: any, error?: any) => {
 		modalController.dismiss({ data, error })
 	}
@@ -19,6 +19,7 @@
 	<ion-content>
 		<div id="selectorDiv" class="ion-padding">
 			<div class="vertical-align">
+				<div class="score-text">Game over.</div>
 				<div class="score-text">You scored {score} out of {total}.</div>
 				<div class="ion-padding">
 					<ion-button color="medium" expand="block" on:click={closeOverlay}>Start Over</ion-button>
@@ -35,7 +36,7 @@
 		height: 500px; /* Or the desired height */
 	}
     .score-text {
-        font-size: larger;
-        font-weight: bold;
+        /* font-size: larger;
+        font-weight: bold; */
     }
 </style>
