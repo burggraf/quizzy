@@ -7,6 +7,7 @@
 
 	import endgame from './endgame.svelte';
 	const QUESTION_COUNT: number = parseInt($page.url.searchParams.get('count') || '20');
+	const QUESTION_DELAY: number = parseInt($page.url.searchParams.get('delay') || '1500');
 	let q: string = '';
 	let a: string = '';
 	let score: number = 0;
@@ -57,7 +58,7 @@
 				score = 0;
 			}
 			loadQuestion();
-		}, 2000);
+		}, QUESTION_DELAY);
 	}
 	onMount(() => {
 		loadQuestion();
