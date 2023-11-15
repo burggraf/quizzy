@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte'
 	import data from './data.json';
 	let q: string = '';
 	let a: string = '';
@@ -23,7 +24,6 @@
 		} else {
 			finish(false, choice);
 		}
-		loadQuestion();
 	}
 	const finish = (scored: boolean, choice: string) => {
 		const el: any = document.getElementById(choice=='D' ? 'drugbutton' : 'planetbutton');
@@ -42,7 +42,9 @@
 			loadQuestion();
 		}, 2000);
 	}
-	loadQuestion();
+	onMount(() => {
+		loadQuestion();
+	});
 </script>
 <ion-card color="light">
 	<!-- <ion-card-header>
