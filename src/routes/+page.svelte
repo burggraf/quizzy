@@ -3,14 +3,16 @@
 	import data from './data.json';
 	//import { modalController } from '@ionic/core'
 	import { modalController } from 'ionic-svelte'
+	import { page } from '$app/stores'
 
 	import endgame from './endgame.svelte';
-	const QUESTION_COUNT = 20;
+	const QUESTION_COUNT = $page.url.searchParams.get('count') || 20;
 	let q: string = '';
 	let a: string = '';
 	let score: number = 0;
 	let total: number = 0;
 	let result: string = '';
+
 	const getQuestion = () => {
 		const index = Math.floor(Math.random() * data.length);
 		const q = data[index];
