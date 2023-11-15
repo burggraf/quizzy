@@ -5,7 +5,7 @@
 	import { modalController } from 'ionic-svelte'
 
 	import endgame from './endgame.svelte';
-	const QUESTION_COUNT = 2;
+	const QUESTION_COUNT = 20;
 	let q: string = '';
 	let a: string = '';
 	let score: number = 0;
