@@ -37,7 +37,7 @@
 	}
 	loadQuestion();
 </script>
-<ion-card color="dark">
+<ion-card color="light">
 	<ion-card-header>
 		<div class="header">Is it a drug, or is it a planet?</div>
 	</ion-card-header>
@@ -52,13 +52,13 @@
 			</ion-row>
 			<ion-row>
 				<ion-col size={"5"}>
-					<ion-button color="light" expand="block" on:click={()=>{choose('D')}}>Drug</ion-button>
+					<ion-button color="medium" expand="block" on:click={()=>{choose('D')}}>Drug</ion-button>
 				</ion-col>
 				<ion-col size={"2"} class="ion-text-center">
-					<ion-button class="or-text" color="light" fill="clear" disabled={true} expand="block"><b>or</b></ion-button>
+					<ion-button color="dark" fill="clear" disabled={true} expand="block"><b>or</b></ion-button>
 				</ion-col>
 				<ion-col size={"5"}>
-					<ion-button color="light" expand="block" on:click={()=>{choose('P')}}>Planet</ion-button>
+					<ion-button color="medium" expand="block" on:click={()=>{choose('P')}}>Planet</ion-button>
 				</ion-col>				
 			</ion-row>
 			<ion-row>
