@@ -56,11 +56,14 @@
 				</ion-col>
 			</ion-row>
 			<ion-row>
-				<ion-col>
-					<ion-button color="danger" expand="block" on:click={()=>{choose('D')}}>Drug</ion-button>
+				<ion-col size={"5"}>
+					<ion-button color="medium" expand="block" on:click={()=>{choose('D')}}>Drug</ion-button>
 				</ion-col>
-				<ion-col>
-					<ion-button color="success" expand="block" on:click={()=>{choose('P')}}>Planet</ion-button>
+				<ion-col size={"2"} class="ion-text-center">
+					<ion-button color="dark" fill="clear" disabled={true} expand="block">or</ion-button>
+				</ion-col>
+				<ion-col size={"5"}>
+					<ion-button color="medium" expand="block" on:click={()=>{choose('P')}}>Planet</ion-button>
 				</ion-col>				
 			</ion-row>
 		</ion-grid>
