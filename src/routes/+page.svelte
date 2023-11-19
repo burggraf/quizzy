@@ -110,7 +110,7 @@
 					<ion-button id="drugbutton" color="light" expand="block" on:click={()=>{choose('D')}}>Drug</ion-button>
 				</ion-col>
 				<ion-col size={"2"} class="ion-text-center">
-					<ion-card-title color="light" class="ion-padding ion-text-center"><ion-label>or</ion-label></ion-card-title>
+					<ion-card-title color="light" class="ion-text-center or-text"><ion-label>or</ion-label></ion-card-title>
 					<!-- <ion-button color="light" fill="clear" disabled={true} expand="block"><b>or</b></ion-button> -->
 				</ion-col>
 				<ion-col size={"5"}>
@@ -130,8 +130,7 @@
 		font-size: larger;
 	}
 	.or-text {
-		font-size: larger;
-		--color: #fff;
-		--background-color: red;
-	}
+		font-size: large;
+		padding-top: 1em;
+	}	
 </style>
