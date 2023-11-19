@@ -50,7 +50,7 @@
 		}
 		total++;
 		setTimeout(async () => {
-			el.color = 'medium';
+			el.color = 'light';
 			result = '';
 			if (total >= QUESTION_COUNT) {
 				const {data,error} = await openModal(endgame,{total,score});
@@ -92,11 +92,11 @@
 		}, 200);
 	}	
 </script>
-<ion-card color="light">
+<ion-card>
 	<!-- <ion-card-header>
 		<div class="header">Is it a drug, or is it a planet?</div>
 	</ion-card-header> -->
-	<ion-card-title class="ion-padding ion-text-center"><ion-label>{q}</ion-label></ion-card-title>
+	<ion-card-title color="light" class="ion-padding ion-text-center"><ion-label>{q}</ion-label></ion-card-title>
 	<!-- <ion-card-subtitle class="ion-padding"><ion-label>Subtitle</ion-label></ion-card-subtitle> -->
 	<ion-card-content>
 		<ion-grid>
@@ -107,18 +107,19 @@
 			</ion-row> -->
 			<ion-row>
 				<ion-col size={"5"}>
-					<ion-button id="drugbutton" color="medium" expand="block" on:click={()=>{choose('D')}}>Drug</ion-button>
+					<ion-button id="drugbutton" color="light" expand="block" on:click={()=>{choose('D')}}>Drug</ion-button>
 				</ion-col>
 				<ion-col size={"2"} class="ion-text-center">
-					<ion-button color="dark" fill="clear" disabled={true} expand="block"><b>or</b></ion-button>
+					<ion-card-title color="light" class="ion-padding ion-text-center"><ion-label>or</ion-label></ion-card-title>
+					<!-- <ion-button color="light" fill="clear" disabled={true} expand="block"><b>or</b></ion-button> -->
 				</ion-col>
 				<ion-col size={"5"}>
-					<ion-button id="planetbutton" color="medium" expand="block" on:click={()=>{choose('P')}}>Planet</ion-button>
+					<ion-button id="planetbutton" color="light" expand="block" on:click={()=>{choose('P')}}>Planet</ion-button>
 				</ion-col>				
 			</ion-row>
 			<ion-row>
 				<ion-col class="ion-text-center">
-					{score} / {total}
+					<ion-card-title color="light" class="ion-padding ion-text-center"><ion-label>{score} / {total}</ion-label></ion-card-title>					
 				</ion-col>
 			</ion-row>
 		</ion-grid>
